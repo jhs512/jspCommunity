@@ -10,6 +10,10 @@ public class MysqlUtilException extends RuntimeException {
 	public MysqlUtilException(Exception e, SecSql sql) {
 		this.originException = e;
 		this.sql = sql;
+		
+		if ( sql != null ) {
+			System.err.println("SQL 오류 : " + sql.getRawSql());
+		}
 	}
 
 	@Override
