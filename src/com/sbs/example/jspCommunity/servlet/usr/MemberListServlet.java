@@ -2,7 +2,6 @@ package com.sbs.example.jspCommunity.servlet.usr;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sbs.example.jspCommunity.container.Container;
+import com.sbs.example.jspCommunity.dto.Member;
 import com.sbs.example.mysqlutil.MysqlUtil;
-import com.sbs.example.mysqlutil.SecSql;
 
 @WebServlet("/usr/member/list")
 public class MemberListServlet extends HttpServlet {
@@ -22,10 +22,10 @@ public class MemberListServlet extends HttpServlet {
 		
 		MysqlUtil.setDBInfo("127.0.0.1", "sbsst", "sbs123414", "jspCommunity");
 		
-		List<Map<String, Object>> memberMapList = MysqlUtil.selectRows(new SecSql().append("SELECT * FROM member ORDER BY id DESC"));
+		List<Member> members = Container.memberService.getForPrintMembers();
 		MysqlUtil.closeConnection();
 		
-		req.setAttribute("memberMapList", memberMapList);
+		req.setAttribute("members", members);
 		
 		req.getRequestDispatcher("/jsp/usr/member/list.jsp").forward(req, resp);
 	}
