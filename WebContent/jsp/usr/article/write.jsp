@@ -22,7 +22,7 @@ Board board = (Board) request.getAttribute("board");
 			<hr />
 			<div>
 				<div>제목</div>
-				<div><input type="text" maxlength="50" placeholder="제목을 입력해주세요." /></div>
+				<div><input name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요." /></div>
 			</div>
 			
 			<hr />

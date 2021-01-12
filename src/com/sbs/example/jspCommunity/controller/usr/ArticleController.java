@@ -1,6 +1,8 @@
 package com.sbs.example.jspCommunity.controller.usr;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,5 +55,24 @@ public class ArticleController {
 		req.setAttribute("board", board);
 
 		return "usr/article/write";
+	}
+
+	public String doWrite(HttpServletRequest req, HttpServletResponse resp) {
+		int memberId = Integer.parseInt(req.getParameter("memberId"));
+		int boardId = Integer.parseInt(req.getParameter("boardId"));
+		String title = req.getParameter("title");
+		String body = req.getParameter("body");
+
+		Map<String, Object> writeArgs = new HashMap<>();
+		writeArgs.put("memberId", memberId);
+		writeArgs.put("boardId", boardId);
+		writeArgs.put("title", title);
+		writeArgs.put("body", body);
+
+		int newArticleId = articleService.write(writeArgs);
+
+		req.setAttribute("alertMsg", newArticleId + "번 게시물이 생성되었습니다.");
+		req.setAttribute("replaceUrl", String.format("detail?id=%d", newArticleId));
+		return "common/redirect";
 	}
 }
