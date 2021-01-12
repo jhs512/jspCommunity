@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sbs.example.jspCommunity.container.Container;
 import com.sbs.example.jspCommunity.dto.Article;
+import com.sbs.example.jspCommunity.dto.Board;
 import com.sbs.example.jspCommunity.service.ArticleService;
 
 public class ArticleController {
@@ -18,6 +19,9 @@ public class ArticleController {
 
 	public String showList(HttpServletRequest req, HttpServletResponse resp) {
 		int boardId = Integer.parseInt(req.getParameter("boardId"));
+		
+		Board board = articleService.getBoardById(boardId);
+		req.setAttribute("board", board);
 
 		List<Article> articles = articleService.getForPrintArticlesByBoardId(boardId);
 
