@@ -33,7 +33,6 @@ Article article = (Article) request.getAttribute("article");
 	
 	<hr />
 	
-	
 	<div>
 		<a href="list?boardId=<%=article.boardId%>">리스트로 이동</a>
 		<a href="modify?id=<%=article.id%>">수정</a>

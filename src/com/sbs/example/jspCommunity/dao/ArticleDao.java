@@ -27,7 +27,7 @@ public class ArticleDao {
 			sql.append("WHERE A.boardId = ?", boardId);
 		}
 		sql.append("ORDER BY A.id DESC");
-		
+
 		List<Map<String, Object>> articleMapList = MysqlUtil.selectRows(sql);
 
 		for (Map<String, Object> articleMap : articleMapList) {
@@ -49,10 +49,10 @@ public class ArticleDao {
 		sql.append("INNER JOIN `board` AS B");
 		sql.append("ON A.boardId = B.id");
 		sql.append("WHERE A.id = ?", id);
-		
+
 		Map<String, Object> map = MysqlUtil.selectRow(sql);
-		
-		if ( map.isEmpty() ) {
+
+		if (map.isEmpty()) {
 			return null;
 		}
 
@@ -64,10 +64,10 @@ public class ArticleDao {
 		sql.append("SELECT B.*");
 		sql.append("FROM board AS B");
 		sql.append("WHERE B.id = ?", id);
-		
+
 		Map<String, Object> map = MysqlUtil.selectRow(sql);
-		
-		if ( map.isEmpty() ) {
+
+		if (map.isEmpty()) {
 			return null;
 		}
 
@@ -82,8 +82,8 @@ public class ArticleDao {
 		sql.append(", boardId = ?", args.get("boardId"));
 		sql.append(", memberId = ?", args.get("memberId"));
 		sql.append(", title = ?", args.get("title"));
-		sql.append(", body = ?", args.get("body"));
-		
+		sql.append(", `body` = ?", args.get("body"));
+
 		return MysqlUtil.insert(sql);
 	}
 
@@ -91,7 +91,33 @@ public class ArticleDao {
 		SecSql sql = new SecSql();
 		sql.append("DELETE FROM article");
 		sql.append("WHERE id = ?", id);
-		
+
 		return MysqlUtil.delete(sql);
+	}
+
+	public int modify(Map<String, Object> args) {
+		SecSql sql = new SecSql();
+		sql.append("UPDATE article");
+		sql.append("SET updateDate = NOW()");
+
+		boolean needToUpdate = false;
+
+		if (args.get("title") != null) {
+			needToUpdate = true;
+			sql.append(", title = ?", args.get("title"));
+		}
+
+		if (args.get("body") != null) {
+			needToUpdate = true;
+			sql.append(", `body` = ?", args.get("body"));
+		}
+		
+		if ( needToUpdate == false ) {
+			return 0;
+		}
+
+		sql.append("WHERE id = ?", args.get("id"));
+
+		return MysqlUtil.update(sql);
 	}
 }
