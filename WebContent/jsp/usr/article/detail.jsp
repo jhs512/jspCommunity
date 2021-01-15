@@ -36,6 +36,8 @@ Article article = (Article) request.getAttribute("article");
 	
 	<div>
 		<a href="list?boardId=<%=article.boardId%>">리스트로 이동</a>
+		<a href="modify?id=<%=article.id%>">수정</a>
+		<a onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) { return false; }" href="doDelete?id=<%=article.id%>">삭제</a>
 	</div>
 </body>
 </html>

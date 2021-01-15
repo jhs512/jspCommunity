@@ -30,4 +30,8 @@ public class ArticleService {
 	public int write(Map<String, Object> args) {
 		return articleDao.write(args);
 	}
+
+	public int delete(int id) {
+		return articleDao.delete(id);
+	}
 }
