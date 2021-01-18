@@ -1,4 +1,4 @@
-package com.sbs.example.jspCommunity.controller.usr;
+package com.sbs.example.jspCommunity.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,10 +12,10 @@ import com.sbs.example.jspCommunity.dto.Article;
 import com.sbs.example.jspCommunity.dto.Board;
 import com.sbs.example.jspCommunity.service.ArticleService;
 
-public class ArticleController {
+public class UsrArticleController {
 	private ArticleService articleService;
 
-	public ArticleController() {
+	public UsrArticleController() {
 		articleService = Container.articleService;
 	}
 
