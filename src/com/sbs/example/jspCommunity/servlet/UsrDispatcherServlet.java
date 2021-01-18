@@ -15,7 +15,7 @@ import com.sbs.example.jspCommunity.controller.usr.MemberController;
 import com.sbs.example.mysqlutil.MysqlUtil;
 
 @WebServlet("/usr/*")
-public class DispatcherServlet extends HttpServlet {
+public class UsrDispatcherServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
@@ -47,23 +47,17 @@ public class DispatcherServlet extends HttpServlet {
 
 			if (actionMethodName.equals("list")) {
 				jspPath = articleController.showList(req, resp);
-			}
-			else if (actionMethodName.equals("detail")) {
+			} else if (actionMethodName.equals("detail")) {
 				jspPath = articleController.showDetail(req, resp);
-			}
-			else if (actionMethodName.equals("modify")) {
+			} else if (actionMethodName.equals("modify")) {
 				jspPath = articleController.showModify(req, resp);
-			}
-			else if (actionMethodName.equals("doModify")) {
+			} else if (actionMethodName.equals("doModify")) {
 				jspPath = articleController.doModify(req, resp);
-			}
-			else if (actionMethodName.equals("write")) {
+			} else if (actionMethodName.equals("write")) {
 				jspPath = articleController.showWrite(req, resp);
-			}
-			else if (actionMethodName.equals("doWrite")) {
+			} else if (actionMethodName.equals("doWrite")) {
 				jspPath = articleController.doWrite(req, resp);
-			}
-			else if (actionMethodName.equals("doDelete")) {
+			} else if (actionMethodName.equals("doDelete")) {
 				jspPath = articleController.doDelete(req, resp);
 			}
 		}
@@ -73,7 +67,7 @@ public class DispatcherServlet extends HttpServlet {
 		RequestDispatcher rd = req.getRequestDispatcher("/jsp/" + jspPath + ".jsp");
 		rd.forward(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);

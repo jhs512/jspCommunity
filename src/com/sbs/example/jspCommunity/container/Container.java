@@ -15,6 +15,7 @@ public class Container {
 	public static MemberDao memberDao;
 	public static MemberService memberService;
 	public static MemberController memberController;
+	public static com.sbs.example.jspCommunity.controller.adm.MemberController admMemberController;
 	
 	static {
 		memberDao = new MemberDao();
@@ -23,6 +24,7 @@ public class Container {
 		memberService = new MemberService();
 		articleService = new ArticleService();
 		
+		admMemberController = new com.sbs.example.jspCommunity.controller.adm.MemberController();
 		memberController = new MemberController();
 		articleController = new ArticleController();
 	}
