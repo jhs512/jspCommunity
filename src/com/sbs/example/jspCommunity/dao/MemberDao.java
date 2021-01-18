@@ -27,4 +27,19 @@ public class MemberDao {
 		return members;
 	}
 
+	public int join(Map<String, Object> args) {
+		SecSql sql = new SecSql();
+		sql.append("INSERT INTO member");
+		sql.append("SET regDate = NOW()");
+		sql.append(", updateDate = NOW()");
+		sql.append(", loginId = ?", args.get("loginId"));
+		sql.append(", loginPw = ?", args.get("loginPw"));
+		sql.append(", `name` = ?", args.get("name"));
+		sql.append(", nickname = ?", args.get("nickname"));
+		sql.append(", email = ?", args.get("email"));
+		//sql.append(", cellphoneNo = ?", args.get("cellphoneNo"));
+
+		return MysqlUtil.insert(sql);
+	}
+
 }

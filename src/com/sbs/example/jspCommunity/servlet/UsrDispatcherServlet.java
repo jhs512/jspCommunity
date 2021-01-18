@@ -42,6 +42,12 @@ public class UsrDispatcherServlet extends HttpServlet {
 			if (actionMethodName.equals("list")) {
 				jspPath = memberController.showList(req, resp);
 			}
+			else if (actionMethodName.equals("join")) {
+				jspPath = memberController.showJoin(req, resp);
+			}
+			else if (actionMethodName.equals("doJoin")) {
+				jspPath = memberController.doJoin(req, resp);
+			}
 		} else if (controllerName.equals("article")) {
 			UsrArticleController articleController = Container.articleController;
 
