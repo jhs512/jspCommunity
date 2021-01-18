@@ -1,35 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.Map"%>
-<%@ page import="java.util.List"%>
-<%@ page import="com.sbs.example.jspCommunity.dto.Member"%>
-<%
-List<Member> members = (List<Member>) request.getAttribute("members");
-%>
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8" />
-<title>회원 리스트</title>
-</head>
-<body>
-	<h1>회원 리스트</h1>
-	<%
-	for (Member member : members) {
-	%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="pageTitle" value="${article.extra__boardName} 게시물 상세페이지" />
+<%@ include file="../../part/head.jspf"%>
+
+<h1>${pageTitle}</h1>
+
+<c:forEach var="member" items="${members}">
 	<div>
-		번호 :
-		<%=member.getId()%>
+		번호 : ${member.id}
 		<br />
-		이름 :
-		<%=member.getName()%>
+		이름 : ${member.name}
 		<br />
-		닉네임 :
-		<%=member.getNickname()%>
+		닉네임 : ${member.nickname}
 		<hr />
 	</div>
-	<%
-	}
-	%>
-</body>
-</html>
+</c:forEach>
+
+<%@ include file="../../part/foot.jspf"%>
