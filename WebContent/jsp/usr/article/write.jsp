@@ -8,7 +8,6 @@
 <div>
 	<form action="doWrite" method="POST">
 		<input type="hidden" name="boardId" value="${board.id}" />
-		<input type="hidden" name="memberId" value="1" />
 
 		<hr />
 		<div>
