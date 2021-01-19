@@ -23,6 +23,10 @@ public class UsrDispatcherServlet extends DispatcherServlet {
 				jspPath = memberController.showJoin(req, resp);
 			} else if (actionMethodName.equals("doJoin")) {
 				jspPath = memberController.doJoin(req, resp);
+			} else if (actionMethodName.equals("login")) {
+				jspPath = memberController.showLogin(req, resp);
+			} else if (actionMethodName.equals("doLogin")) {
+				jspPath = memberController.doLogin(req, resp);
 			}
 		} else if (controllerName.equals("article")) {
 			UsrArticleController articleController = Container.articleController;
