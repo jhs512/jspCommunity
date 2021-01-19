@@ -122,3 +122,6 @@ title = '제목5',
 ALTER TABLE `member` CHANGE `loginId` `loginId` CHAR(50) NOT NULL AFTER `updateDate`,
                      CHANGE `loginPw` `loginPw` VARCHAR(200) NOT NULL AFTER `loginId`,
                      ADD COLUMN `cellphoneNo` CHAR(20) NOT NULL AFTER `email`;
+                     
+# adminLevel을 authLevel로 변경
+ALTER TABLE `member` CHANGE `adminLevel` `authLevel` TINYINT(1) UNSIGNED DEFAULT 2 NOT NULL COMMENT '0=탈퇴/1=로그인정지/2=일반/3=인증된,4=관리자'; 
