@@ -64,7 +64,16 @@ public class UsrMemberController {
 
 	public String showLogin(HttpServletRequest req, HttpServletResponse resp) {
 		return "usr/member/login";
-		
+
+	}
+
+	public String doLogout(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession session = req.getSession();
+		session.removeAttribute("loginedMemberId");
+
+		req.setAttribute("alertMsg", "로그아웃 되었습니다.");
+		req.setAttribute("replaceUrl", "../home/main");
+		return "common/redirect";
 	}
 
 	public String doLogin(HttpServletRequest req, HttpServletResponse resp) {

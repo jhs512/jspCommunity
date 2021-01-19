@@ -7,3 +7,16 @@
 <title>${pageTitle}</title>
 </head>
 <body>
+
+<div>
+	<c:if test="${sessionScope.loginedMemberId > 0}">
+		<a href="../article/write?boardId=1">공지사항 글쓰기</a>
+		<a href="../member/doLogout">로그아웃</a>
+	</c:if>
+	
+	<c:if test="${sessionScope.loginedMemberId == null}">
+		<a href="../member/login">로그인</a>
+		<a href="../member/join">회원가입</a>
+	</c:if>
+	
+</div>
