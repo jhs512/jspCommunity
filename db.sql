@@ -117,3 +117,8 @@ memberId = 2,
 boardId = 1,
 title = '제목5',
 `body` = '내용5';
+
+# cellphoneNo 추가 및 칼럼 순서 재정렬
+ALTER TABLE `member` CHANGE `loginId` `loginId` CHAR(50) NOT NULL AFTER `updateDate`,
+                     CHANGE `loginPw` `loginPw` VARCHAR(200) NOT NULL AFTER `loginId`,
+                     ADD COLUMN `cellphoneNo` CHAR(20) NOT NULL AFTER `email`;
