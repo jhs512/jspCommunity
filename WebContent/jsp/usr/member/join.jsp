@@ -21,15 +21,15 @@
 				loginId
 			},
 			function(data) {
-				if ( data == "YES" ) {
-					alert("해당 로그인 아이디는 사용가능합니다.");
-					DoJoinForm__checkedLoginId = loginId;
+				if ( data.msg ) {
+					alert(data.msg);
 				}
-				else {
-					alert("해당 로그인 아이디는 이미 사용중 입니다.");
+			
+				if ( data.resultCode.substr(0, 2) == "S-" ) {
+					DoJoinForm__checkedLoginId = data.loginId;
 				}
 			},
-			"html"
+			"json"
 		);
 	}
 	
@@ -121,15 +121,17 @@
 		DoJoinForm__submited = true;
 	}
 	</script>
-	<form action="doJoin" method="POST" onsubmit="DoJoinForm__submit(this); return false;">
+	<form action="doJoin" method="POST"
+		onsubmit="DoJoinForm__submit(this); return false;">
 		<hr />
 		<div>
 			<div>로그인 아이디</div>
 			<div>
 				<input name="loginId" type="text" maxlength="50"
 					placeholder="로그인 아이디를 입력해주세요." />
-				
-				<button onclick="DoJoinForm__checkLoginIdDup(this);" name="btnLoginIdDupCheck" type="button">중복체크</button>
+
+				<button onclick="DoJoinForm__checkLoginIdDup(this);"
+					name="btnLoginIdDupCheck" type="button">중복체크</button>
 			</div>
 		</div>
 
@@ -142,7 +144,7 @@
 					placeholder="로그인 비밀버호를 입력해주세요." />
 			</div>
 		</div>
-		
+
 		<hr />
 
 		<div>
