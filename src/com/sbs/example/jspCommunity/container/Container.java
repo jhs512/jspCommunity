@@ -7,6 +7,7 @@ import com.sbs.example.jspCommunity.controller.UsrMemberController;
 import com.sbs.example.jspCommunity.dao.ArticleDao;
 import com.sbs.example.jspCommunity.dao.MemberDao;
 import com.sbs.example.jspCommunity.service.ArticleService;
+import com.sbs.example.jspCommunity.service.EmailService;
 import com.sbs.example.jspCommunity.service.MemberService;
 
 public class Container {
@@ -19,11 +20,13 @@ public class Container {
 	public static UsrMemberController memberController;
 	public static AdmMemberController admMemberController;
 	public static UsrHomeController homeController;
+	public static EmailService emailService;
 	
 	static {
 		memberDao = new MemberDao();
 		articleDao = new ArticleDao();
 		
+		emailService = new EmailService();
 		memberService = new MemberService();
 		articleService = new ArticleService();
 		
