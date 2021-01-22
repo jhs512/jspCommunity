@@ -1,7 +1,9 @@
 package com.sbs.example.jspCommunity.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -57,24 +59,53 @@ public abstract class DispatcherServlet extends HttpServlet {
 
 		MysqlUtil.setDBInfo("127.0.0.1", "sbsst", "sbs123414", "jspCommunity");
 
+		String controllerTypeName = requestUriBits[2];
 		String controllerName = requestUriBits[3];
 		String actionMethodName = requestUriBits[4];
-		
+
+		String actionUrl = "/" + controllerTypeName + "/" + controllerName + "/" + actionMethodName;
+
+		// 데이터 추가 인터셉터 시작
 		boolean isLogined = false;
 		int loginedMemberId = 0;
 		Member loginedMember = null;
-		
+
 		HttpSession session = req.getSession();
-		
-		if ( session.getAttribute("loginedMemberId") != null ) {
+
+		if (session.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
-			loginedMemberId = (int)session.getAttribute("loginedMemberId");
+			loginedMemberId = (int) session.getAttribute("loginedMemberId");
 			loginedMember = Container.memberService.getMemberById(loginedMemberId);
 		}
-		
+
 		req.setAttribute("isLogined", isLogined);
 		req.setAttribute("loginedMemberId", loginedMemberId);
 		req.setAttribute("loginedMember", loginedMember);
+
+		// 데이터 추가 인터셉터 끝
+
+		// 로그인 필요 필터링 인터셉터 시작
+
+		List<String> needToLoginActionUrls = new ArrayList<>();
+
+		needToLoginActionUrls.add("/usr/member/doLogout");
+		needToLoginActionUrls.add("/usr/article/write");
+		needToLoginActionUrls.add("/usr/article/doWrite");
+		needToLoginActionUrls.add("/usr/article/modify");
+		needToLoginActionUrls.add("/usr/article/doModify");
+		needToLoginActionUrls.add("/usr/article/doDelete");
+
+		if (needToLoginActionUrls.contains(actionUrl)) {
+			if ((boolean) req.getAttribute("isLogined") == false) {
+				req.setAttribute("alertMsg", "로그인 후 이용해주세요.");
+				req.setAttribute("replaceUrl", "../member/login");
+
+				RequestDispatcher rd = req.getRequestDispatcher("/jsp/common/redirect.jsp");
+				rd.forward(req, resp);
+			}
+		}
+
+		// 로그인 필요 필터링 인터셉터 끝
 
 		Map<String, Object> rs = new HashMap<>();
 		rs.put("controllerName", controllerName);
