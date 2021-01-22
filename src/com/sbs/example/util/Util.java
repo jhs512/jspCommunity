@@ -44,14 +44,6 @@ public class Util {
 	}
 
 	public static int sendMail(String smtpServerId, String smtpServerPw, String from, String fromName, String to, String title, String body) {
-		System.out.println(smtpServerId);
-		System.out.println(smtpServerPw);
-		System.out.println(from);
-		System.out.println(fromName);
-		System.out.println(to);
-		System.out.println(title);
-		System.out.println(body);
-
 		Properties prop = System.getProperties();
 		prop.put("mail.smtp.starttls.enable", "true");
 		prop.put("mail.smtp.host", "smtp.gmail.com");
