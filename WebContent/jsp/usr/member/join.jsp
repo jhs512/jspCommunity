@@ -28,8 +28,8 @@
 					alert(data.msg);
 				}
 			
-				if ( data.resultCode.substr(0, 2) == "S-" ) {
-					DoJoinForm__checkedLoginId = data.loginId;
+				if ( data.success ) {
+					DoJoinForm__checkedLoginId = data.body.loginId;
 				}
 			},
 			"json"
