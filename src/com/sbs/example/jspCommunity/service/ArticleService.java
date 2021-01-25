@@ -38,4 +38,8 @@ public class ArticleService {
 	public int modify(Map<String, Object> args) {
 		return articleDao.modify(args);
 	}
+
+	public int getArticlesCountByBoardId(int boardId) {
+		return articleDao.getArticlesCountByBoardId(boardId);
+	}
 }

@@ -9,6 +9,11 @@
 <div>
 	<a href="write?boardId=${param.boardId}">게시물 작성</a>
 </div>
+
+<div>
+	총 게시물 수 : ${totalCount}
+</div>
+
 <c:forEach items="${articles}" var="article">
 <div>
 	번호 : ${article.id}
