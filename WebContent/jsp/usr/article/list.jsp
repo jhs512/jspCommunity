@@ -15,7 +15,27 @@
 <hr />
 
 <div>
-	<form action="">
+	<script>
+	let DoSearchForm__submited = false;
+	function DoSearchForm__submit(form) {
+		if ( DoSearchForm__submited ) {
+			alert('처리중입니다');
+			return;
+		}
+	
+		form.searchKeyword.value = form.searchKeyword.value.trim();
+		
+		if ( form.searchKeyword.value.length == 0 ) {
+			alert('검색어를 입력해주세요.');
+			form.searchKeyword.focus();
+			return;
+		}
+		
+		form.submit();
+		DoSearchForm__submited = true;
+	}
+	</script>
+	<form action="" onsubmit="DoSearchForm__submit(this); return false;">
 		<input type="hidden" name="boardId" value="${param.boardId}" />
 		
 		<select name="searchKeywordType">
