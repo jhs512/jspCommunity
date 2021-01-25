@@ -26,6 +26,10 @@ public class UsrDispatcherServlet extends DispatcherServlet {
 
 			if (actionMethodName.equals("list")) {
 				jspPath = memberController.showList(req, resp);
+			} else if (actionMethodName.equals("findLoginId")) {
+				jspPath = memberController.showFindLoginId(req, resp);
+			} else if (actionMethodName.equals("doFindLoginId")) {
+				jspPath = memberController.doFindLoginId(req, resp);
 			} else if (actionMethodName.equals("join")) {
 				jspPath = memberController.showJoin(req, resp);
 			} else if (actionMethodName.equals("doJoin")) {
