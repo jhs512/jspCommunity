@@ -38,6 +38,7 @@
 					<a href="../member/login">로그인</a>
 					<a href="../member/join">회원가입</a>
 					<a href="../member/findLoginId">로그인아이디 찾기</a>
+					<a href="../member/findLoginPw">로그인비번 찾기</a>
 				</c:if>
 			</div>
 		</div>
