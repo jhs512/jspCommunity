@@ -16,6 +16,8 @@
 	작성자 : ${article.extra__writer}
 	<br />
 	제목 : ${article.title}
+	<hr />
+	${article.body}
 </div>
 
 <hr />
