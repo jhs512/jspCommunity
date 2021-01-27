@@ -39,7 +39,7 @@ public class ArticleService {
 		return articleDao.getArticlesCountByBoardId(boardId, searchKeywordType, searchKeyword);
 	}
 
-	public List<Article> getForPrintArticlesByBoardId(int boardId, String searchKeywordType, String searchKeyword) {
-		return articleDao.getForPrintArticlesByBoardId(boardId, searchKeywordType, searchKeyword);
+	public List<Article> getForPrintArticlesByBoardId(int boardId, int limitStart, int limitCount, String searchKeywordType, String searchKeyword) {
+		return articleDao.getForPrintArticlesByBoardId(boardId, limitStart, limitCount, searchKeywordType, searchKeyword);
 	}
 }
