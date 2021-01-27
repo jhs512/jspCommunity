@@ -125,3 +125,9 @@ ALTER TABLE `member` CHANGE `loginId` `loginId` CHAR(50) NOT NULL AFTER `updateD
                      
 # adminLevel을 authLevel로 변경
 ALTER TABLE `member` CHANGE `adminLevel` `authLevel` TINYINT(1) UNSIGNED DEFAULT 2 NOT NULL COMMENT '0=탈퇴/1=로그인정지/2=일반/3=인증된,4=관리자'; 
+
+# 기존회원의 비번을 암호화
+UPDATE `member`
+SET loginPw = SHA2(loginPw, 256);
+
+
