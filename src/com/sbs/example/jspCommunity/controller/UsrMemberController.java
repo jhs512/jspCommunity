@@ -228,10 +228,10 @@ public class UsrMemberController {
 			req.setAttribute("historyBack", true);
 			return "common/redirect";
 		}
-		
+
 		ResultData sendTempLoginPwToEmailRs = memberService.sendTempLoginPwToEmail(member);
-		
-		if ( sendTempLoginPwToEmailRs.isFail() ) {
+
+		if (sendTempLoginPwToEmailRs.isFail()) {
 			req.setAttribute("alertMsg", sendTempLoginPwToEmailRs.getMsg());
 			req.setAttribute("historyBack", true);
 			return "common/redirect";
@@ -239,6 +239,39 @@ public class UsrMemberController {
 
 		req.setAttribute("alertMsg", sendTempLoginPwToEmailRs.getMsg());
 		req.setAttribute("replaceUrl", "../member/login");
+		return "common/redirect";
+	}
+
+	public String showModify(HttpServletRequest req, HttpServletResponse resp) {
+		return "usr/member/modify";
+	}
+
+	public String doModify(HttpServletRequest req, HttpServletResponse resp) {
+		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
+
+		String loginPw = (String) req.getParameter("loginPwReal");
+
+		if (loginPw != null && loginPw.length() == 0) {
+			loginPw = null;
+		}
+
+		String name = (String) req.getParameter("name");
+		String nickname = (String) req.getParameter("nickname");
+		String email = (String) req.getParameter("email");
+		String cellphoneNo = (String) req.getParameter("cellphoneNo");
+
+		Map<String, Object> modifyParam = new HashMap<>();
+		modifyParam.put("loginPw", loginPw);
+		modifyParam.put("name", name);
+		modifyParam.put("nickname", nickname);
+		modifyParam.put("email", email);
+		modifyParam.put("cellphoneNo", cellphoneNo);
+		modifyParam.put("id", loginedMemberId);
+
+		memberService.modify(modifyParam);
+
+		req.setAttribute("alertMsg", "회원정보가 수정되었습니다.");
+		req.setAttribute("replaceUrl", "../home/main");
 		return "common/redirect";
 	}
 }
