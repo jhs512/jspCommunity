@@ -19,10 +19,6 @@ public class Article {
 	private String extra__boardName;
 	private String extra__boardCode;
 
-	public int getId() {
-		return id;
-	}
-
 	public Article(Map<String, Object> map) {
 		this.id = (int) map.get("id");
 		this.regDate = (String) map.get("regDate");
