@@ -95,7 +95,7 @@ public class UsrMemberController {
 	public String doLogout(HttpServletRequest req, HttpServletResponse resp) {
 		HttpSession session = req.getSession();
 		session.removeAttribute("loginedMemberId");
-
+		
 		req.setAttribute("alertMsg", "로그아웃 되었습니다.");
 		req.setAttribute("replaceUrl", "../home/main");
 		return "common/redirect";
@@ -128,9 +128,19 @@ public class UsrMemberController {
 		}
 
 		session.setAttribute("loginedMemberId", member.getId());
+		
+		boolean isUsingTempPassword = memberService.getIsUsingTempPassword(member.getId());
+		
+		String alertMsg = String.format("%s님 환영합니다.", member.getNickname());
+		String replaceUrl = "../home/main";
+		
+		if ( isUsingTempPassword ) {
+			alertMsg = String.format("%s님은 현재 임시 비밀번호를 사용중입니다. 변경 후 이용해주세요.", member.getNickname());
+			replaceUrl = "../member/modify";
+		}
 
-		req.setAttribute("alertMsg", String.format("%s님 환영합니다.", member.getNickname()));
-		req.setAttribute("replaceUrl", "../home/main");
+		req.setAttribute("alertMsg", alertMsg);
+		req.setAttribute("replaceUrl", replaceUrl);
 		return "common/redirect";
 	}
 
@@ -269,6 +279,10 @@ public class UsrMemberController {
 		modifyParam.put("id", loginedMemberId);
 
 		memberService.modify(modifyParam);
+		
+		if ( loginPw != null ) {
+			memberService.setIsUsingTempPassword(loginedMemberId, false);
+		}
 
 		req.setAttribute("alertMsg", "회원정보가 수정되었습니다.");
 		req.setAttribute("replaceUrl", "../home/main");
