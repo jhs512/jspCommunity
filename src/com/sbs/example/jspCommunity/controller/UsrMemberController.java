@@ -131,6 +131,10 @@ public class UsrMemberController extends Controller {
 
 		String alertMsg = String.format("%s님 환영합니다.", member.getNickname());
 		String replaceUrl = "../home/main";
+		
+		if ( Util.isEmpty(req.getParameter("afterLoginUrl")) == false ) {
+			replaceUrl = req.getParameter("afterLoginUrl");
+		}
 
 		if (isUsingTempPassword) {
 			alertMsg = String.format("%s님은 현재 임시 비밀번호를 사용중입니다. 변경 후 이용해주세요.", member.getNickname());
