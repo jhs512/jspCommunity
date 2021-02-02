@@ -311,6 +311,10 @@ a {
 .btn-warning {
   background-color: #ffcc10;
 }
+
+input, button {
+	font-family: inherit;
+}
 /* 버튼 끝 */
 
 /* 버튼랩 시작 */
