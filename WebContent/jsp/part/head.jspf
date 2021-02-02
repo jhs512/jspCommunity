@@ -63,6 +63,32 @@
 
 				<nav class="top-bar__menu-box-1">
 					<ul class="flex height-100p">
+						<li>
+							<a class="flex flex-ai-c height-100p">
+								<span>
+									<i class="fas fa-sign-in-alt"></i>
+								</span>
+								<span>게시판</span>
+							</a>
+							<div class="con-min-width">
+								<div class="con">
+									<ul>
+										<li>
+											<a href="../article/list?boardId=1" class="block">
+												<span><i class="far fa-flag"></i></span>
+												<span>공지사항</span>
+											</a>
+										</li>
+										<li>
+											<a href="../article/list?boardId=1" class="block">
+												<span><i class="fas fa-users"></i></span>
+												<span>커뮤니티</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
 						<c:if test="${isLogined}">
 							<li>
 								<a href="../member/modify" class="flex flex-ai-c height-100p">
@@ -81,7 +107,7 @@
 								</a>
 							</li>
 						</c:if>
-						
+
 						<c:if test="${isLogined == false}">
 							<li>
 								<a href="../member/login" class="flex flex-ai-c height-100p">
@@ -100,7 +126,8 @@
 								</a>
 							</li>
 							<li>
-								<a href="../member/findLoginId" class="flex flex-ai-c height-100p">
+								<a href="../member/findLoginId"
+									class="flex flex-ai-c height-100p">
 									<span>
 										<i class="far fa-user-circle"></i>
 									</span>
@@ -108,7 +135,8 @@
 								</a>
 							</li>
 							<li>
-								<a href="../member/findLoginPw" class="flex flex-ai-c height-100p">
+								<a href="../member/findLoginPw"
+									class="flex flex-ai-c height-100p">
 									<span>
 										<i class="far fa-user-circle"></i>
 									</span>
