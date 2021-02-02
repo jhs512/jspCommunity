@@ -48,9 +48,8 @@
 
 </head>
 <body>
-
 	<div class="body-content">
-		<header class="top-bar con-min-width">
+		<header class="top-bar con-min-width visible-md-up">
 			<div class="con flex height-100p">
 				<a href="../home/main" class="logo flex flex-ai-c">
 					<span>
@@ -148,5 +147,26 @@
 				</nav>
 			</div>
 		</header>
-
+		<header class="mobile-top-bar con-min-width visible-sm-down">
+			<div class="con flex height-100p">
+				<div class="flex-1-0-0"></div>
+				<a href="../home/main" class="logo flex flex-ai-c">
+					<span>
+						<i class="fas fa-keyboard"></i>
+					</span>
+					<span>Devly</span>
+				</a>
+				<div class="flex-1-0-0 flex flex-jc-e flex-ai-c">
+					<div class="mobile-top-bar__btn-toggle-mobile-side-bar">
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<aside class="mobile-side-bar visible-sm-down">
+			
+		</aside>
+		
 		<main>
