@@ -4,30 +4,81 @@
 
 <c:set var="pageTitle" value="${article.extra__boardName} 게시물 상세페이지" />
 <%@ include file="../../part/head.jspf"%>
-<h1>${pageTitle}</h1>
 
-<div>
-	번호 : ${article.id}
-	<br />
-	작성날짜 : ${article.regDate}
-	<br />
-	갱신날짜 : ${article.updateDate}
-	<br />
-	작성자 : ${article.extra__writer}
-	<br />
-	제목 : ${article.title}
-	<hr />
-	<script type="text/x-template">${article.body}</script>
-  <div class="toast-ui-viewer"></div>
+<div class="title-bar padding-0-10 con-min-width">
+	<h1 class="con">
+		<span>
+			<i class="fas fa-newspaper"></i>
+		</span>
+		<span>${pageTitle}</span>
+	</h1>
 </div>
 
-<hr />
+<div class="article-detail-box detail-box padding-0-10 con-min-width">
+	<div class="con">
+		<table>
+			<colgroup>
+				<col width="150">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>
+						<span>번호</span>
+					</th>
+					<td>
+						<div>${article.id}</div>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<span>작성날짜</span>
+					</th>
+					<td>
+						<div>${article.regDate}</div>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<span>갱신날짜</span>
+					</th>
+					<td>
+						<div>${article.updateDate}</div>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<span>작성자</span>
+					</th>
+					<td>
+						<div>${article.extra__writer}</div>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<span>제목</span>
+					</th>
+					<td>
+						<div>${article.title}</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<script type="text/x-template">${article.body}</script>
+						<div class="toast-ui-viewer"></div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 
-<div>
-	<a href="list?boardId=${article.boardId}">리스트로 이동</a>
-	<a href="modify?id=${article.id}">수정</a>
-	<a onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) { return false; }"
+<div class="article-btn-box padding-0-10 con-min-width">
+	<div class="con btn-wrap">
+		<a class="btn btn-info" href="${param.listUrl}">리스트</a>
+		<a class="btn btn-info" href="modify?id=${article.id}">수정</a>
+		<a class="btn btn-danger" onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) { return false; }"
 		href="doDelete?id=${article.id}">삭제</a>
+	</div>
 </div>
 
 <%@ include file="../../part/foot.jspf"%>
