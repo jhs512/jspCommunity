@@ -103,7 +103,7 @@ a {
 }
 
 .color-red {
-	color:red;
+  color: red;
 }
 /* 라이브러리 - 일반 끝 */
 
@@ -292,6 +292,10 @@ a {
 .mobile-top-bar__btn-toggle-mobile-side-bar.active > div:nth-child(3) {
   transform: rotate(-45deg);
 }
+
+.mobile-top-bar-padding {
+  height: calc(var(--mobile-top-bar__height) + 30px);
+}
 /* 모바일 탑바 끝 */
 
 /* 모바일 사이드바 시작 */
@@ -372,41 +376,41 @@ html.mobile-side-bar-actived .mobile-side-bar {
 
 /* 게시물 리스트 페이지박스 시작 */
 .article-list-page-box {
-	margin-top:30px;
+  margin-top: 30px;
 }
 
 .article-list-page-box > .con > a {
-  padding:10px;
-  border:1px solid transparent;
-  margin:0 5px;
+  padding: 10px;
+  border: 1px solid transparent;
+  margin: 0 5px;
 }
 
 .article-list-page-box__page-btn--no {
-	border-color:#dfdfdf !important;
+  border-color: #dfdfdf !important;
 }
 
 .article-list-page-box__page-btn--no.color-red {
-	border-color: #afafaf !important;
+  border-color: #afafaf !important;
 }
 
-@media ( max-width:800px ) {
-	.article-list-page-box > .con > a {
-	  padding:7px;
-	  border:0 solid transparent;
-	  margin:0;
-	}
+@media (max-width: 800px) {
+  .article-list-page-box > .con > a {
+    padding: 7px;
+    border: 0 solid transparent;
+    margin: 0;
+  }
 }
 /* 게시물 리스트 페이지박스 끝 */
 
 /* 게시물 버튼박스 시작 */
 .article-btn-box {
-	margin-top:20px;
+  margin-top: 20px;
 }
 /* 게시물 리스트 버튼박스 끝 */
 
 /* 게시물 리스트 게시물 개수 박스 시작 */
 .article-list-total-count-box {
-	margin-top:30px;
+  margin-top: 30px;
 }
 /* 게시물 리스트 게시물 개수 박스 끝 */
 
@@ -414,7 +418,7 @@ html.mobile-side-bar-actived .mobile-side-bar {
 
 /* 게시물 리스트 박스 - PC 시작 */
 .article-list-box {
-	margin-top:30px;
+  margin-top: 30px;
 }
 
 .article-list-box > .con > table {
@@ -633,7 +637,7 @@ button {
 }
 
 .form-box > form > table > tbody > tr > td > div > select {
-	padding: 10px;
+  padding: 10px;
 }
 
 .form-box > form > table > tbody > tr > td > div > input[type="text"],
@@ -674,7 +678,7 @@ button {
 
 /* 토스트UI에디터 시작 */
 .tui-editor-contents {
-	font-family: inherit;
+  font-family: inherit;
 }
 /* 토스트UI에디터 끝 */
 

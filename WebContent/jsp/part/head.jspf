@@ -169,6 +169,8 @@
 				</div>
 			</div>
 		</header>
+		<div class="mobile-top-bar-padding visible-sm-down"></div>
+		
 		<aside class="mobile-side-bar visible-sm-down">
 			<nav class="mobile-side-bar__menu-box-1">
 				<ul>
