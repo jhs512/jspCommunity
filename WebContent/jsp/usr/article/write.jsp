@@ -1,11 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="pageTitle" value="${board.name} 게시물 작성" />
 <%@ include file="../../part/head.jspf"%>
-<h1>${pageTitle}</h1>
 
-<div>
+<div class="title-bar padding-0-10 con-min-width">
+	<h1 class="con">
+		<span>
+			<i class="fas fa-pen"></i>
+		</span>
+		<span>${pageTitle}</span>
+	</h1>
+</div>
+
+<div class="article-write-form-box form-box padding-0-10 con-min-width">
 	<script>
 	let DoWriteForm__submited = false;
 	let DoWriteForm__checkedLoginId = "";
@@ -42,36 +50,57 @@
 		DoWriteForm__submited = true;
 	}
 	</script>
-	<form action="doWrite" method="POST" onsubmit="DoWriteForm__submit(this); return false;">
+	<form class="con" action="doWrite" method="POST"
+		onsubmit="DoWriteForm__submit(this); return false;">
 		<input type="hidden" name="boardId" value="${board.id}" />
 		<input type="hidden" name="body" />
 
-		<hr />
-		<div>
-			<div>제목</div>
-			<div>
-				<input name="title" type="text" maxlength="50"
-					placeholder="제목을 입력해주세요." />
-			</div>
-		</div>
+		<table>
+			<colgroup>
+				<col width="150">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>
+						<span>제목</span>
+					</th>
+					<td>
+						<div>
+							<input name="title" type="text" maxlength="50"
+								placeholder="제목을 입력해주세요." />
+						</div>
+					</td>
+				</tr>
 
-		<hr />
+				<tr>
+					<th>
+						<span>내용</span>
+					</th>
+					<td>
+						<div>
+							<div>
+								<script type="text/x-template"></script>
+								<div class="toast-ui-editor"></div>
+							</div>
+						</div>
+					</td>
+				</tr>
 
-		<div>
-			<div>내용</div>
-			<div>
-				<script type="text/x-template"></script>
- 				<div class="toast-ui-editor"></div>
-			</div>
-		</div>
-		<hr />
-		<div>
-			<div>작성</div>
-			<div>
-				<input type="submit" value="작성" />
-				<button type="button" onclick="history.back();">뒤로가기</button>
-			</div>
-		</div>
+				<tr>
+					<th>
+						<span>작성</span>
+					</th>
+					<td>
+						<div>
+							<div class="btn-wrap">
+								<input class="btn btn-primary" type="submit" value="작성" />
+								<button class="btn btn-info" type="button" onclick="history.back();">뒤로가기</button>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</form>
 </div>
 <%@ include file="../../part/foot.jspf"%>
