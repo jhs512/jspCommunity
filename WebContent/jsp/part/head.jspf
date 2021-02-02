@@ -74,13 +74,17 @@
 									<ul>
 										<li>
 											<a href="../article/list?boardId=1" class="block">
-												<span><i class="far fa-flag"></i></span>
+												<span>
+													<i class="far fa-flag"></i>
+												</span>
 												<span>공지사항</span>
 											</a>
 										</li>
 										<li>
 											<a href="../article/list?boardId=1" class="block">
-												<span><i class="fas fa-users"></i></span>
+												<span>
+													<i class="fas fa-users"></i>
+												</span>
 												<span>커뮤니티</span>
 											</a>
 										</li>
@@ -166,7 +170,90 @@
 			</div>
 		</header>
 		<aside class="mobile-side-bar visible-sm-down">
-			
+			<nav class="mobile-side-bar__menu-box-1">
+				<ul>
+					<li>
+						<a class="block">
+							<span>
+								<i class="fas fa-sign-in-alt"></i>
+							</span>
+							<span>게시판</span>
+						</a>
+
+						<ul>
+							<li>
+								<a href="../article/list?boardId=1" class="block">
+									<span>
+										<i class="far fa-flag"></i>
+									</span>
+									<span>공지사항</span>
+								</a>
+							</li>
+							<li>
+								<a href="../article/list?boardId=1" class="block">
+									<span>
+										<i class="fas fa-users"></i>
+									</span>
+									<span>커뮤니티</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<c:if test="${isLogined}">
+						<li>
+							<a href="../member/modify" class="block">
+								<span>
+									<i class="fas fa-sign-in-alt"></i>
+								</span>
+								<span>회원정보수정</span>
+							</a>
+						</li>
+						<li>
+							<a href="../member/doLogout" class="block">
+								<span>
+									<i class="fas fa-sign-in-alt"></i>
+								</span>
+								<span>로그아웃</span>
+							</a>
+						</li>
+					</c:if>
+
+					<c:if test="${isLogined == false}">
+						<li>
+							<a href="../member/login" class="block">
+								<span>
+									<i class="fas fa-sign-in-alt"></i>
+								</span>
+								<span>로그인</span>
+							</a>
+						</li>
+						<li>
+							<a href="../member/join" class="block">
+								<span>
+									<i class="fas fa-user-plus"></i>
+								</span>
+								<span>회원가입</span>
+							</a>
+						</li>
+						<li>
+							<a href="../member/findLoginId" class="block">
+								<span>
+									<i class="far fa-user-circle"></i>
+								</span>
+								<span>아이디찾기</span>
+							</a>
+						</li>
+						<li>
+							<a href="../member/findLoginPw" class="block">
+								<span>
+									<i class="far fa-user-circle"></i>
+								</span>
+								<span>비번찾기</span>
+							</a>
+						</li>
+					</c:if>
+				</ul>
+			</nav>
 		</aside>
-		
+
 		<main>
