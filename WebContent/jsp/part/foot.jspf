@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	</main>
-	
+</main>
+<footer class="bottom-bar con-min-width">
+	<div class="con flex flex-jc-c height-100p">
+		<a href="../home/main" class="logo flex flex-ai-c">
+			<span>
+				<i class="fas fa-keyboard"></i>
+			</span>
+			<span>Devly</span>
+		</a>
+	</div>
+</footer>
+</div>
 </body>
 </html>

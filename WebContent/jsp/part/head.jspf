@@ -6,27 +6,40 @@
 <meta charset="UTF-8" />
 <title>${pageTitle}</title>
 
+<!-- 반응형 모바일을 위해 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!-- 제이쿼리 불러오기 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- 폰트어썸 불러오기 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 
 <!-- 토스트 UI 시작 -->
 <!-- 하이라이트 라이브러리 추가, 토스트 UI 에디터에서 사용됨 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/default.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/default.min.css">
 
 <!-- 토스트 UI 에디터, 자바스크립트 코어 -->
-<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js" defer></script>
+<script
+	src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"
+	defer></script>
 
 <!-- 코드 미러 라이브러리 추가, 토스트 UI 에디터에서 사용됨 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.css" />
 <!-- 토스트 UI 에디터, CSS 코어 -->
-<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+<link rel="stylesheet"
+	href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 
 <!-- 토스트 UI 에디터, 신택스 하이라이트 플러그인 추가 -->
-<script src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight.min.js" defer></script>
+<script
+	src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight.min.js"
+	defer></script>
 <!-- 토스트 UI 끝 -->
 
 <link rel="stylesheet"
@@ -35,30 +48,77 @@
 
 </head>
 <body>
-	<header class="top-bar con-min-width">
-		<div class="con">
-			<c:if test="${isLogined}">
-				<div>로그인된 회원의 닉네임 : ${loginedMember.nickname}</div>
-			</c:if>
 
-			<div>
-				<a href="../home/main">메인</a>
-				<a href="../article/list?boardId=1">공지사항 게시물 리스트</a>
+	<div class="body-content">
+		<header class="top-bar con-min-width">
+			<div class="con flex height-100p">
+				<a href="../home/main" class="logo flex flex-ai-c">
+					<span>
+						<i class="fas fa-keyboard"></i>
+					</span>
+					<span>Devly</span>
+				</a>
 
-				<c:if test="${isLogined}">
-					<a href="../article/write?boardId=1">공지사항 글쓰기</a>
-					<a href="../member/modify">회원정보수정</a>
-					<a href="../member/doLogout">로그아웃</a>
-				</c:if>
+				<div class="flex-grow-1"></div>
 
-				<c:if test="${isLogined == false}">
-					<a href="../member/login">로그인</a>
-					<a href="../member/join">회원가입</a>
-					<a href="../member/findLoginId">로그인아이디 찾기</a>
-					<a href="../member/findLoginPw">로그인비번 찾기</a>
-				</c:if>
+				<nav class="top-bar__menu-box-1">
+					<ul class="flex height-100p">
+						<c:if test="${isLogined}">
+							<li>
+								<a href="../member/modify" class="flex flex-ai-c height-100p">
+									<span>
+										<i class="fas fa-sign-in-alt"></i>
+									</span>
+									<span>회원정보수정</span>
+								</a>
+							</li>
+							<li>
+								<a href="../member/doLogout" class="flex flex-ai-c height-100p">
+									<span>
+										<i class="fas fa-sign-in-alt"></i>
+									</span>
+									<span>로그아웃</span>
+								</a>
+							</li>
+						</c:if>
+						
+						<c:if test="${isLogined == false}">
+							<li>
+								<a href="../member/login" class="flex flex-ai-c height-100p">
+									<span>
+										<i class="fas fa-sign-in-alt"></i>
+									</span>
+									<span>로그인</span>
+								</a>
+							</li>
+							<li>
+								<a href="../member/join" class="flex flex-ai-c height-100p">
+									<span>
+										<i class="fas fa-user-plus"></i>
+									</span>
+									<span>회원가입</span>
+								</a>
+							</li>
+							<li>
+								<a href="../member/findLoginId" class="flex flex-ai-c height-100p">
+									<span>
+										<i class="far fa-user-circle"></i>
+									</span>
+									<span>아이디찾기</span>
+								</a>
+							</li>
+							<li>
+								<a href="../member/findLoginPw" class="flex flex-ai-c height-100p">
+									<span>
+										<i class="far fa-user-circle"></i>
+									</span>
+									<span>비번찾기</span>
+								</a>
+							</li>
+						</c:if>
+					</ul>
+				</nav>
 			</div>
-		</div>
-	</header>
+		</header>
 
-	<main>
+		<main>

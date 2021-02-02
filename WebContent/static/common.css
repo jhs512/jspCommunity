@@ -1,73 +1,381 @@
 /* 폰트적용 시작 */
 @font-face {
-	font-family: 'LotteMartDream';
-	font-style: normal;
-	font-weight: 400;
-	src:
-		url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2')
-		format('woff2'),
-		url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff')
-		format('woff');
+  font-family: 'LotteMartDream';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
 }
 
 @font-face {
-	font-family: 'LotteMartDream';
-	font-style: normal;
-	font-weight: 700;
-	src:
-		url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2')
-		format('woff2'),
-		url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff')
-		format('woff');
+  font-family: 'LotteMartDream';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff') format('woff');
 }
 
 @font-face {
-	font-family: 'LotteMartDream';
-	font-style: normal;
-	font-weight: 300;
-	src:
-		url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2')
-		format('woff2'),
-		url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff')
-		format('woff');
+  font-family: 'LotteMartDream';
+  font-style: normal;
+  font-weight: 300;
+  src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff');
 }
 
 html {
-	font-family: 'LotteMartDream', sans-serif;
+  font-family: 'LotteMartDream', sans-serif;
 }
 /* 폰트적용 끝 */
 
 /* 노말라이즈 시작 */
-body, ul, li {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+body, ul, li, h1, h2, h3 {
+  margin:0;
+  padding:0;
+  list-style:none;
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+  color:inherit;
+  text-decoration:none;
 }
 /* 노말라이즈 끝 */
 
-/* 라이브러리 시작 */
+/* 라이브러리 */
+
+/* 라이브러리 - 일반 시작 */
 .con {
-	margin-left: auto;
-	margin-right: auto;
+  margin-left:auto;
+  margin-right:auto;
 }
-/* 라이브러리 끝 */
+
+.padding-0-10 {
+  padding-left:10px;
+  padding-right:10px;
+}
+
+.block {
+  display:block;
+}
+
+.flex {
+  display:flex;
+}
+
+.flex-grow-1 {
+  flex-grow:1;
+}
+
+.flex-ai-c {
+  align-items:center;
+}
+
+.flex-jc-c {
+  justify-content: center;
+}
+
+.height-100p {
+  height:100%;
+}
+
+.hover-link:hover {
+  text-decoration:underline;
+  color:red;
+}
+/* 라이브러리 - 일반 끝 */
+
+/* 라이브러리 - 디버그 시작 */
+.bd-red {
+  border:2px solid red;
+}
+
+.bd-green {
+  border:2px solid green;
+}
+
+.bd-blue {
+  border:2px solid blue;
+}
+
+.bg-red {
+  background-color:red;
+}
+
+.bg-green {
+  background-color:green;
+}
+
+.bg-blue {
+  background-color:blue;
+}
+/* 라이브러리 - 디버그 끝 */
 
 /* 커스텀 시작 */
 :root {
-	--site-width: 1200px;
+  --site-width:1200px;
 }
 
-.con-min-width {
-	min-width: 320px;
+@media ( min-width: 801px ) {
+  .visible-sm-down {
+    display:none !important;
+  }
+}
+
+@media ( max-width: 800px ) {
+  .visible-md-up {
+    display:none !important;
+  }
 }
 
 .con {
-	max-width: var(--site-width);
+  max-width:var(--site-width);
 }
-/* 커스텀 끝 */
 
+.con-min-width {
+  min-width:320px;
+}
+
+/* 바디콘텐트 시작 */
+.body-content {
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.body-content > main {
+  flex-grow:1;
+}
+/* 바디콘텐트 끝 */
+
+/* 로고 시작 */
+.logo {
+  font-size:2rem;
+}
+
+.logo > span:nth-child(2) {
+  margin-left:5px;
+}
+/* 로고 끝 */
+
+/* 탑바 시작 */
+.top-bar {
+  height:100px;
+  background-color:black;
+  color:white;
+}
+
+.top-bar .logo {
+  padding-left:10px;
+}
+
+.top-bar__menu-box-1 > ul > li > a {
+  padding:0 20px;
+}
+
+.top-bar__menu-box-1 > ul > li:hover > a {
+  background-color:white;
+  color:black;
+}
+
+.top-bar__menu-box-1 > ul > li > a > span:last-child {
+  margin-left:5px;
+}
+
+/* 탑바 끝 */
+
+/* 타이틀 시작 */
+.title-bar {
+  margin-top:30px;
+  margin-bottom:20px;
+}
+/* 타이틀 끝 */
+
+/* 하단바 시작 */
+.bottom-bar {
+  height:100px;
+  background-color:black;
+  color:white;
+}
+/* 하단바 끝 */
+
+/* 게시물 리스트 박스 시작 */
+
+/* 게시물 리스트 박스 - PC 시작 */
+.article-list-box > .con > table {
+  border-top:3px solid black;
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+}
+
+.article-list-box > .con > table > thead > tr > th {
+  text-align:left;
+}
+
+.article-list-box > .con > table th,
+.article-list-box > .con > table td {
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+.article-list-box > .con > table tr {
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.article-list-box__title {
+  display:block;
+}
+
+.article-list-box__title--pc {
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+/* 게시물 리스트 박스 - PC 끝 */
+
+/* 게시물 리스트 박스 - MOBILE 시작 */
+@media ( max-width:800px ) {
+  .article-list-box > .con > table > thead,
+  .article-list-box > .con > table > tbody > tr > td:not(.visible-sm-down) {
+    display:none;
+  }
+
+  .article-list-box > .con > table > tbody > tr {
+    width:100%;
+  }
+
+  .article-list-box > .con > table > colgroup > col {
+    width:auto;
+  }
+
+  .article-list-box > .con > table > colgroup > col:first-child {
+    width: 100%;
+  }
+
+  .article-list-box__id--mobile {
+    background-color:#3D94F6;
+    color:white;
+    font-weight:bold;
+    padding:0 7px;
+    border-radius:10px;
+    align-self:flex-start;
+  }
+
+  .article-list-box__title--mobile {
+    margin-left:5px;
+  }
+
+  .article-list-box > .con > table > tbody > tr > td.visible-sm-down > .flex:nth-child(2) {
+    margin-top:10px;
+  }
+
+  .article-list-box > .con > table > tbody > tr > td.visible-sm-down > .flex:nth-child(2) > span:nth-child(2) {
+    margin-left:5px;
+    margin-right:5px;
+  }
+}
+
+/* 게시물 리스트 박스 - MOBILE 끝 */
+
+/* 게시물 리스트 박스 끝 */
+
+/* 버튼 시작 */
+.btn {
+  font-size: 1rem;
+  line-height: 1rem;
+  padding: 10px 15px 7px 15px;
+  display: inline-flex;
+  font-weight: bold;
+  border-radius: 10px;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  background-color: #3D94F6;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 20px #000000;
+  text-decoration: none;
+  box-sizing: border-box;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+}
+
+.btn-danger {
+  background-color: #dc3540;
+}
+
+.btn-warning {
+  background-color: #ffcc10;
+}
+/* 버튼 끝 */
+
+/* 버튼랩 시작 */
+@media (min-width: 801px) {
+  .btn-wrap {
+    display:flex;
+  }
+
+  .btn-wrap > .btn + .btn {
+    margin-left:10px;
+  }
+}
+@media (max-width: 800px) {
+  .btn {
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .btn-wrap > .btn + .btn {
+    margin-top:10px;
+  }
+}
+/* 버튼랩 끝 */
+
+/* 폼박스 시작 */
+.form-box > form {
+  display:block;
+  width:100%;
+}
+
+.form-box > form > table {
+  border-top:3px solid black;
+  width:100%;
+  border-collapse:collapse;
+}
+
+.form-box > form > table > tbody > tr > th {
+  text-align:left;
+}
+
+.form-box > form > table > tbody > tr > th,
+.form-box > form > table > tbody > tr > td {
+  padding:10px 0;
+}
+
+.form-box > form > table > tbody > tr > td > div > input[type="text"],
+.form-box > form > table > tbody > tr > td > div > input[type="password"]{
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+  padding:10px;
+}
+
+@media ( max-width:800px ) {
+  .form-box > form > table > tbody > tr,
+  .form-box > form > table > tbody > tr > th,
+  .form-box > form > table > tbody > tr > td {
+    display:block;
+  }
+
+  .form-box > form > table > tbody > tr {
+    border-bottom: 1px solid #dfdfdf;
+  }
+}
+/* 폼박스 끝 */
+
+/* 커스텀 끝 */
