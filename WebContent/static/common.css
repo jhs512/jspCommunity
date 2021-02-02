@@ -361,12 +361,26 @@ input, button {
   padding:10px 0;
 }
 
+.form-box > form > table > tbody > tr > td > div {
+	display:flex;
+}
+
+.form-box > form > table > tbody > tr > td > div > :only-child {
+	width:100%;
+	box-sizing:border-box;
+}
+
 .form-box > form > table > tbody > tr > td > div > input[type="text"],
-.form-box > form > table > tbody > tr > td > div > input[type="password"]{
-  display:block;
-  width:100%;
-  box-sizing:border-box;
+.form-box > form > table > tbody > tr > td > div > input[type="password"],
+.form-box > form > table > tbody > tr > td > div > input[type="tel"],
+.form-box > form > table > tbody > tr > td > div > input[type="email"]
+{
+  flex:1 0 0;
   padding:10px;
+}
+
+.form-box > form > table > tbody > tr > td > div > input + .btn {
+	margin-left:10px;
 }
 
 @media ( max-width:800px ) {
@@ -378,6 +392,17 @@ input, button {
 
   .form-box > form > table > tbody > tr {
     border-bottom: 1px solid #dfdfdf;
+  }
+  
+  .form-box > form > table > tbody > tr > td > div {
+  	flex-wrap:wrap;
+  }
+  
+  .form-box > form > table > tbody > tr > td > div > input + .btn {
+	margin-left:0;
+	margin-top:10px;
+	display:block;
+	width:100%;
   }
 }
 /* 폼박스 끝 */
