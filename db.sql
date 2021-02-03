@@ -162,7 +162,7 @@ CREATE TABLE `like` (
     relTypeCode CHAR(30) NOT NULL,
     relId INT(10) UNSIGNED NOT NULL,
     memberId INT(10) UNSIGNED NOT NULL,
-    `point` SMALLINT(1) UNSIGNED NOT NULL
+    `point` SMALLINT(1) NOT NULL
 );
 
 # 좋아요 인덱스

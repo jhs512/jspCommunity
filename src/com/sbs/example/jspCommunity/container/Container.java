@@ -18,17 +18,18 @@ import com.sbs.example.jspCommunity.service.MemberService;
 public class Container {
 	public static ArticleService articleService;
 	public static ArticleDao articleDao;
-	public static UsrArticleController articleController;
+	public static UsrArticleController usrArticleController;
 
 	public static MemberDao memberDao;
 	public static MemberService memberService;
-	private static UsrLikeController usrLikeController;
-	public static UsrMemberController memberController;
+	public static UsrMemberController usrMemberController;
 	public static AdmMemberController admMemberController;
-	public static UsrHomeController homeController;
-
+	
+	public static UsrLikeController usrLikeController;
 	public static LikeService likeService;
 	public static LikeDao likeDao;
+	
+	public static UsrHomeController usrHomeController;
 
 	public static AttrService attrService;
 	public static AttrDao attrDao;
@@ -49,8 +50,8 @@ public class Container {
 
 		usrLikeController = new UsrLikeController();
 		admMemberController = new AdmMemberController();
-		memberController = new UsrMemberController();
-		articleController = new UsrArticleController();
-		homeController = new UsrHomeController();
+		usrMemberController = new UsrMemberController();
+		usrArticleController = new UsrArticleController();
+		usrHomeController = new UsrHomeController();
 	}
 }
