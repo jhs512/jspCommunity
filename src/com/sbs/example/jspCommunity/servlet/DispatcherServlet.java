@@ -1,21 +1,19 @@
 package com.sbs.example.jspCommunity.servlet;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sbs.example.jspCommunity.App;
 import com.sbs.example.jspCommunity.container.Container;
 import com.sbs.example.jspCommunity.dto.Member;
 import com.sbs.example.mysqlutil.MysqlUtil;
@@ -56,30 +54,37 @@ public abstract class DispatcherServlet extends HttpServlet {
 		String requestUri = req.getRequestURI();
 		String[] requestUriBits = requestUri.split("/");
 
-		if (requestUriBits.length < 5) {
+		int minBitsCount = 5;
+
+		if (App.isProductMode()) {
+			minBitsCount = 4;
+		}
+
+		if (requestUriBits.length < minBitsCount) {
 			resp.getWriter().append("올바른 요청이 아닙니다.");
 			return null;
 		}
-		
-		String profilesActive = System.getProperty("spring.profiles.active");
-		
-		boolean isProductionMode = false;
 
-		if (profilesActive != null && profilesActive.equals("production")) {
-			isProductionMode = true;
-		}
-		
-		if ( isProductionMode ) {
+		if (App.isProductMode()) {
 			MysqlUtil.setDBInfo("127.0.0.1", "sbsstLocal", "sbs123414", "jspCommunity");
-		}
-		else {
+		} else {
 			MysqlUtil.setDBInfo("127.0.0.1", "sbsst", "sbs123414", "jspCommunity");
 			MysqlUtil.setDevMode(true);
 		}
 
-		String controllerTypeName = requestUriBits[2];
-		String controllerName = requestUriBits[3];
-		String actionMethodName = requestUriBits[4];
+		int controllerTypeNameIndex = 2;
+		int controllerNameIndex = 3;
+		int actionMethodNameIndex = 4;
+
+		if (App.isProductMode()) {
+			controllerTypeNameIndex = 1;
+			controllerNameIndex = 2;
+			actionMethodNameIndex = 3;
+		}
+
+		String controllerTypeName = requestUriBits[controllerTypeNameIndex];
+		String controllerName = requestUriBits[controllerNameIndex];
+		String actionMethodName = requestUriBits[actionMethodNameIndex];
 
 		String actionUrl = "/" + controllerTypeName + "/" + controllerName + "/" + actionMethodName;
 
@@ -99,15 +104,15 @@ public abstract class DispatcherServlet extends HttpServlet {
 		req.setAttribute("isLogined", isLogined);
 		req.setAttribute("loginedMemberId", loginedMemberId);
 		req.setAttribute("loginedMember", loginedMember);
-		
+
 		String currentUrl = req.getRequestURI();
-		
+
 		if (req.getQueryString() != null) {
 			currentUrl += "?" + req.getQueryString();
 		}
 
 		String encodedCurrentUrl = Util.getUrlEncoded(currentUrl);
-		
+
 		req.setAttribute("currentUrl", currentUrl);
 		req.setAttribute("encodedCurrentUrl", encodedCurrentUrl);
 

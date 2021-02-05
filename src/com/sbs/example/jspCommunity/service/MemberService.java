@@ -49,7 +49,7 @@ public class MemberService {
 
 	public ResultData sendTempLoginPwToEmail(Member actor) {
 		// 메일 제목과 내용 만들기
-		String siteName = App.getSite();
+		String siteName = App.getSiteName();
 		String siteLoginUrl = App.getLoginUrl();
 		String title = "[" + siteName + "] 임시 패스워드 발송";
 		String tempPassword = Util.getTempPassword(6);
