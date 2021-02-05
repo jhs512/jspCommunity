@@ -154,43 +154,43 @@
 </div>
 
 <c:if test="${isLogined == false}">
-	<div
-		class="article-reply-write-form-box form-box padding-0-10 con-min-width">
+	<div class="reply-write-form-box form-box padding-0-10 con-min-width">
 		<div class="con">
-			<a class="udl hover-link" href="../member/login?afterLoginUrl=${encodedCurrentUrl}">로그인</a> 후 이용해주세요.
+			<a class="udl hover-link"
+				href="../member/login?afterLoginUrl=${encodedCurrentUrl}">로그인</a>
+			후 이용해주세요.
 		</div>
 	</div>
 </c:if>
 <c:if test="${isLogined}">
-	<div
-		class="article-reply-write-form-box form-box padding-0-10 con-min-width">
+	<div class="reply-write-form-box form-box padding-0-10 con-min-width">
 		<script>
-	let Reply__DoWriteForm__submited = false;
-	let Reply__DoWriteForm__checkedLoginId = "";
-	
-	// 폼 발송전 체크
-	function Reply__DoWriteForm__submit(form) {
-		if ( Reply__DoWriteForm__submited ) {
-			alert('처리중입니다.');
-			return;
-		}
+		let Reply__DoWriteForm__submited = false;
+		let Reply__DoWriteForm__checkedLoginId = "";
+		
+		// 폼 발송전 체크
+		function Reply__DoWriteForm__submit(form) {
+			if ( Reply__DoWriteForm__submited ) {
+				alert('처리중입니다.');
+				return;
+			}
+				
+			const editor = $(form).find('.toast-ui-editor').data('data-toast-editor');
+			const body = editor.getMarkdown().trim();
 			
-		const editor = $(form).find('.toast-ui-editor').data('data-toast-editor');
-		const body = editor.getMarkdown().trim();
-		
-		if ( body.length == 0 ) {
-			alert('내용을 입력해주세요.');
-			editor.focus();
+			if ( body.length == 0 ) {
+				alert('내용을 입력해주세요.');
+				editor.focus();
+				
+				return;
+			}
 			
-			return;
+			form.body.value = body;
+			
+			form.submit();
+			Reply__DoWriteForm__submited = true;
 		}
-		
-		form.body.value = body;
-		
-		form.submit();
-		Reply__DoWriteForm__submited = true;
-	}
-	</script>
+		</script>
 
 		<form class="con" action="../reply/doWrite" method="POST"
 			onsubmit="Reply__DoWriteForm__submit(this); return false;">
@@ -237,5 +237,118 @@
 		</form>
 	</div>
 </c:if>
+
+<div class="title-bar padding-0-10 con-min-width">
+	<h1 class="con">
+		<span>
+			<i class="fas fa-list"></i>
+		</span>
+		<span>댓글 리스트</span>
+	</h1>
+</div>
+
+<div class="reply-list-total-count-box padding-0-10 con-min-width">
+	<div class="con">
+		<div>
+			<span>
+				<i class="fas fa-clipboard-list"></i>
+			</span>
+			<span>총 게시물 수 : </span>
+			<span class="color-red"> ${replies.size()} </span>
+		</div>
+	</div>
+</div>
+
+<div class="reply-list-box response-list-box padding-0-10 con-min-width">
+	<div class="con">
+		<table>
+			<colgroup>
+				<col width="50">
+				<col width="150">
+				<col width="100">
+				<col width="100">
+			</colgroup>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>날짜</th>
+					<th>작성자</th>
+					<th>좋아요</th>
+					<th>내용</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${replies}" var="reply">
+					<tr>
+						<td>
+							<span class="response-list-box__id">${reply.id}</span>
+						</td>
+						<td>
+							<span class="response-list-box__reg-date">${reply.regDate}</span>
+						</td>
+						<td>
+							<span class="response-list-box__writer">${reply.extra__writer}</span>
+						</td>
+						<td>
+							<span class="response-list-box__likeOnlyPoint">
+								<span>
+									<i class="far fa-thumbs-up"></i>
+								</span>
+								<span> ${reply.extra__likeOnlyPoint} </span>
+							</span>
+							<span class="response-list-box__dislikeOnlyPoint">
+								<span>
+									<i class="far fa-thumbs-down"></i>
+								</span>
+								<span> ${reply.extra__dislikeOnlyPoint} </span>
+							</span>
+						</td>
+						<td>
+							<script type="text/x-template">${reply.body}</script>
+							<div class="toast-ui-viewer"></div>
+						</td>
+						<td class="visible-sm-down">
+							<div class="flex">
+								<span class="response-list-box__id response-list-box__id--mobile">${reply.id}</span>
+							</div>
+
+							<div class="flex">
+								<span class="response-list-box__likeOnlyPoint">
+									<span>
+										<i class="far fa-thumbs-up"></i>
+									</span>
+									<span> ${reply.extra__likeOnlyPoint} </span>
+								</span>
+								<span class="response-list-box__dislikeOnlyPoint">
+									<span>
+										<i class="far fa-thumbs-down"></i>
+									</span>
+									<span> ${reply.extra__dislikeOnlyPoint} </span>
+								</span>
+							</div>
+
+							<div class="flex">
+								<span
+									class="response-list-box__writer response-list-box__writer--mobile">${reply.extra__writer}</span>
+								<span>&nbsp;|&nbsp;</span>
+								<span
+									class="response-list-box__reg-date response-list-box__reg-date--mobile">${reply.regDate}</span>
+							</div>
+							
+							<div>
+								<script type="text/x-template">${reply.body}</script>
+								<div class="toast-ui-viewer"></div>
+							</div>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+
 
 <%@ include file="../../part/foot.jspf"%>

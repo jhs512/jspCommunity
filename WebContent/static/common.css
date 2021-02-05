@@ -424,65 +424,66 @@ main > .title-bar:not(:first-child) {
 }
 /* 게시물 리스트 게시물 개수 박스 끝 */
 
-/* 게시물 리스트 박스 시작 */
+/* 반응형 리스트 박스 시작 */
 
-/* 게시물 리스트 박스 - PC 시작 */
-.article-list-box {
+/* 반응형 리스트 박스 - PC 시작 */
+.response-list-box {
   margin-top: 30px;
 }
 
-.article-list-box > .con > table {
+.response-list-box > .con > table {
   border-top: 3px solid black;
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 }
 
-.article-list-box > .con > table > thead > tr > th {
+.response-list-box > .con > table > thead > tr > th {
   text-align: left;
 }
 
-.article-list-box > .con > table th,
-.article-list-box > .con > table td {
+.response-list-box > .con > table th,
+.response-list-box > .con > table td {
   padding-top: 20px;
   padding-bottom: 20px;
+  vertical-align: top;
 }
 
-.article-list-box > .con > table tr {
+.response-list-box > .con > table tr {
   border-bottom: 1px solid #dfdfdf;
 }
 
-.article-list-box__title {
+.response-list-box__title {
   display: block;
 }
 
-.article-list-box__title--pc {
+.response-list-box__title--pc {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* 게시물 리스트 박스 - PC 끝 */
+/* 반응형 리스트 박스 - PC 끝 */
 
-/* 게시물 리스트 박스 - MOBILE 시작 */
+/* 반응형 리스트 박스 - MOBILE 시작 */
 @media (max-width: 800px) {
-  .article-list-box > .con > table > thead,
-  .article-list-box > .con > table > tbody > tr > td:not(.visible-sm-down) {
+  .response-list-box > .con > table > thead,
+  .response-list-box > .con > table > tbody > tr > td:not(.visible-sm-down) {
     display: none;
   }
 
-  .article-list-box > .con > table > tbody > tr {
+  .response-list-box > .con > table > tbody > tr {
     width: 100%;
   }
 
-  .article-list-box > .con > table > colgroup > col {
+  .response-list-box > .con > table > colgroup > col {
     width: auto;
   }
 
-  .article-list-box > .con > table > colgroup > col:first-child {
+  .response-list-box > .con > table > colgroup > col:first-child {
     width: 100%;
   }
 
-  .article-list-box__id--mobile {
+  .response-list-box__id--mobile {
     background-color: #3d94f6;
     color: white;
     font-weight: bold;
@@ -491,15 +492,15 @@ main > .title-bar:not(:first-child) {
     align-self: flex-start;
   }
 
-  .article-list-box__title--mobile {
+  .response-list-box__title--mobile {
     margin-left: 5px;
   }
 
-  .article-list-box > .con > table > tbody > tr > td.visible-sm-down > .flex:not(:first-child) {
+  .response-list-box > .con > table > tbody > tr > td.visible-sm-down > .flex:not(:first-child) {
     margin-top: 10px;
   }
 
-  .article-list-box
+  .response-list-box
     > .con
     > table
     > tbody
@@ -512,9 +513,9 @@ main > .title-bar:not(:first-child) {
   }
 }
 
-/* 게시물 리스트 박스 - MOBILE 끝 */
+/* 반응형 리스트 박스 - MOBILE 끝 */
 
-/* 게시물 리스트 박스 끝 */
+/* 반응형 리스트 박스 끝 */
 
 /* 버튼 시작 */
 .btn {
