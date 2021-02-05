@@ -115,6 +115,12 @@ public abstract class DispatcherServlet extends HttpServlet {
 
 		req.setAttribute("currentUrl", currentUrl);
 		req.setAttribute("encodedCurrentUrl", encodedCurrentUrl);
+		
+		Map<String, Object> param = Util.getParamMap(req);
+		String paramJson = Util.getJsonText(param);
+		
+		req.setAttribute("paramMap", param);
+		req.setAttribute("paramJson", paramJson);
 
 		// 데이터 추가 인터셉터 끝
 

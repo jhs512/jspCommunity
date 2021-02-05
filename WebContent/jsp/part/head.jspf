@@ -46,6 +46,10 @@
 	href="${pageContext.request.contextPath}/static/common.css" />
 <script src="${pageContext.request.contextPath}/static/common.js" defer></script>
 
+<%="<script>"%>
+var param = ${paramJson};
+<%="</script>"%>
+
 </head>
 <body>
 	<div class="body-content">
