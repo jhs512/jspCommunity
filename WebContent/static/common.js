@@ -50,12 +50,29 @@ function Editor__init() {
 	if ( initialValue.length == 0 ) {
 		initialValue = " ";
 	}
-
-    var editor = new toastui.Editor({
+	
+	let height = 600;
+	
+	if ( $(node).attr('data-height') ) {
+		height = parseInt($(node).attr('data-height'));
+	}
+	
+	let previewStyle = 'vertical';
+	
+	if ( $(node).attr('data-previewStyle') ) {
+		previewStyle = $(node).attr('data-previewStyle');
+	}
+	else {
+		if ( $(window).width() < 600 ) {
+			previewStyle = 'tab';
+		}
+	}
+	
+	var editor = new toastui.Editor({
       el: node,
-      previewStyle: 'vertical',
+      previewStyle: previewStyle,
       initialValue: initialValue,
-      height:600,
+      height:height,
       plugins: [toastui.Editor.plugin.codeSyntaxHighlight, youtubePlugin, codepenPlugin]
     });
 

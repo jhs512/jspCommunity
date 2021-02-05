@@ -167,3 +167,17 @@ CREATE TABLE `like` (
 
 # 좋아요 인덱스
 ALTER TABLE `jspCommunity`.`like` ADD INDEX (`relTypeCode`, `relId`, `memberId`); 
+
+# 댓글 테이블 추가
+CREATE TABLE `reply` (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    relTypeCode CHAR(30) NOT NULL,
+    relId INT(10) UNSIGNED NOT NULL,
+    memberId INT(10) UNSIGNED NOT NULL,
+    `body` TEXT NOT NULL
+);
+
+# 댓글에 인덱스 걸기
+ALTER TABLE `jspCommunity`.`reply` ADD INDEX (`relTypeCode`, `relId`);

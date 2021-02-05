@@ -9,6 +9,7 @@ import com.sbs.example.jspCommunity.controller.UsrArticleController;
 import com.sbs.example.jspCommunity.controller.UsrHomeController;
 import com.sbs.example.jspCommunity.controller.UsrLikeController;
 import com.sbs.example.jspCommunity.controller.UsrMemberController;
+import com.sbs.example.jspCommunity.controller.UsrReplyController;
 
 @WebServlet("/usr/*")
 public class UsrDispatcherServlet extends DispatcherServlet {
@@ -81,6 +82,16 @@ public class UsrDispatcherServlet extends DispatcherServlet {
 				jspPath = likeController.doDislike(req, resp);
 			} else if (actionMethodName.equals("doCancelDislike")) {
 				jspPath = likeController.doCancelDislike(req, resp);
+			}
+		} else if (controllerName.equals("reply")) {
+			UsrReplyController replyController = Container.usrReplyController;
+
+			if (actionMethodName.equals("doWrite")) {
+				jspPath = replyController.doWrite(req, resp);
+			} else if (actionMethodName.equals("doDelete")) {
+				jspPath = replyController.doDelete(req, resp);
+			} else if (actionMethodName.equals("doModify")) {
+				jspPath = replyController.doModify(req, resp);
 			}
 		}
 

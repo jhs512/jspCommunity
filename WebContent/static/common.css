@@ -97,6 +97,10 @@ a {
   height: 100%;
 }
 
+.udl {
+  text-decoration: underline;
+}
+
 .hover-link:hover {
   text-decoration: underline;
   color: red;
@@ -249,6 +253,7 @@ a {
   left: 0;
   width: 100%;
   height: var(--mobile-top-bar__height);
+  z-index:1000;
 }
 
 .mobile-top-bar__btn-toggle-mobile-side-bar {
@@ -312,6 +317,7 @@ a {
   transition: left 0.3s, opacity 0.3s, visibility 0.3s;
   display: flex;
   align-items: center;
+  z-index:1000;
 }
 
 html.mobile-side-bar-actived .mobile-side-bar {
@@ -360,6 +366,10 @@ html.mobile-side-bar-actived .mobile-side-bar {
 /* 모바일 사이드바 끝 */
 
 /* 타이틀 시작 */
+main > .title-bar:not(:first-child) {
+	margin-top:30px;
+}
+
 .title-bar {
   margin-bottom: 20px;
 }

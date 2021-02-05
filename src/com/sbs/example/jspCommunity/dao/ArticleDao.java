@@ -43,7 +43,7 @@ public class ArticleDao {
 				sql.append("AND (A.title LIKE CONCAT('%', ? '%') OR A.body LIKE CONCAT('%', ? '%'))", searchKeyword, searchKeyword);
 			}
 		}
-		
+
 		sql.append("GROUP BY A.id");
 
 		sql.append("ORDER BY A.id DESC");
@@ -173,5 +173,20 @@ public class ArticleDao {
 		}
 
 		return MysqlUtil.selectRowIntValue(sql);
+	}
+
+	public Article getArticleById(int id) {
+		SecSql sql = new SecSql();
+		sql.append("SELECT A.*");
+		sql.append("FROM article AS A");
+		sql.append("WHERE A.id = ?", id);
+
+		Map<String, Object> map = MysqlUtil.selectRow(sql);
+
+		if (map.isEmpty()) {
+			return null;
+		}
+
+		return new Article(map);
 	}
 }

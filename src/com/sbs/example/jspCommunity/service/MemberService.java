@@ -108,7 +108,7 @@ public class MemberService {
 		String date = attrService.getValue("member__" + actorId + "__extra__loginPwModifiedDate");
 		
 		if ( Util.isEmpty(date) ) {
-			return true;
+			return false;
 		}
 		
 		int pass = Util.getPassedSecondsFrom(date);
