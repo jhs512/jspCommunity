@@ -485,13 +485,7 @@ html.mobile-side-bar-actived .mobile-side-bar {
     margin-left: 5px;
   }
 
-  .article-list-box
-    > .con
-    > table
-    > tbody
-    > tr
-    > td.visible-sm-down
-    > .flex:nth-child(2) {
+  .article-list-box > .con > table > tbody > tr > td.visible-sm-down > .flex:not(:first-child) {
     margin-top: 10px;
   }
 

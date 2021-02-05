@@ -92,7 +92,7 @@
 	<div class="con btn-wrap">
 		<c:if test="${article.extra.actorCanLike}">
 			<a class="btn btn-primary" href="../like/doLike?relTypeCode=article&relId=${article.id}&redirectUrl=${encodedCurrentUrl}" onclick="if ( !confirm('`좋아요` 처리 하시겠습니까?') ) return false;">
-				<span><i class="fas fa-thumbs-up"></i></span>
+				<span><i class="far fa-thumbs-up"></i></span>
 				<span>좋아요</span>
 			</a>
 		</c:if>
@@ -106,7 +106,7 @@
 		
 		<c:if test="${article.extra.actorCanDislike}">
 			<a class="btn btn-danger" href="../like/doDislike?relTypeCode=article&relId=${article.id}&redirectUrl=${encodedCurrentUrl}" onclick="if ( !confirm('`싫어요` 처리 하시겠습니까?') ) return false;">
-				<span><i class="fas fa-thumbs-down"></i></span>
+				<span><i class="far fa-thumbs-down"></i></span>
 				<span>싫어요</span>
 			</a>
 		</c:if>
