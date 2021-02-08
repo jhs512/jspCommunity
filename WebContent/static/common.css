@@ -449,6 +449,14 @@ main > .title-bar:not(:first-child) {
   vertical-align: top;
 }
 
+.response-list-box > .con > table td .tui-editor-contents > :first-child {
+	margin-top:0;
+}
+
+.response-list-box > .con > table td .tui-editor-contents > :last-child {
+	margin-bottom:0;
+}
+
 .response-list-box > .con > table tr {
   border-bottom: 1px solid #dfdfdf;
   transition:background-color 1s;
