@@ -6,6 +6,7 @@
 
 <section class="section-main-text con-min-width">
 	<div class="con">
+		<h1>메인</h1>
 		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita aliquid quaerat laboriosam aut sequi nam distinctio placeat architecto delectus iusto accusamus minima saepe. Quidem reiciendis hic animi labore sint doloremque!</div>
 		<div>Rem ullam quam eligendi repellendus blanditiis non aliquid nam unde dolore deserunt velit quisquam ea animi nemo perferendis neque commodi repellat officiis reprehenderit atque. Similique libero rerum vitae suscipit officia.</div>
 		<div>Officiis assumenda esse modi id consequatur a facere eius commodi asperiores atque quia error officia numquam ullam quidem. Architecto voluptates provident itaque facere deserunt nobis magnam tempore asperiores laboriosam saepe.</div>
