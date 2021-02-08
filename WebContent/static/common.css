@@ -510,7 +510,7 @@ main > .title-bar:not(:first-child) {
     margin-left: 5px;
   }
 
-  .response-list-box > .con > table > tbody > tr > td.visible-sm-down > .flex:not(:first-child) {
+  .response-list-box > .con > table > tbody > tr > td.visible-sm-down > :not(:first-child) {
     margin-top: 10px;
   }
 
